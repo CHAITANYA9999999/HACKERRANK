@@ -45,3 +45,33 @@ The stub code in the editor then prints ava as our first line of output and wel 
 
 */
 
+
+public class Solution{
+    public static String getSmallestAndLargest(String s, int k) {
+        String smallest = "";
+        String largest = "";
+        
+        // Complete the function
+        // 'smallest' must be the lexicographically smallest substring of length 'k'
+        // 'largest' must be the lexicographically largest substring of length 'k'
+        int len = s.length()-k+1;
+        String arr[] = new String[len]; 
+        for(int i=0;i<len;i++){
+            arr[i] = s.substring(i,i+k);
+        }
+        
+        for(int i=0;i<len;i++){
+            for(int j=i+1;j<len;j++){
+                if(arr[i].compareTo(arr[j])>0){
+                    String temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        
+        smallest = arr[0];
+        largest = arr[len-1];
+        return smallest + "\n" + largest;
+    }
+
